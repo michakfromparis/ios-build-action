@@ -12,7 +12,7 @@ platform :ios do
       password: keychain_password,
       default_keychain: true,
       unlock: true,
-      timeout: 3600
+      timeout: 0
     )
 
     if @is_split_cer
