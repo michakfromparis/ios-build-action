@@ -139,6 +139,7 @@ platform :ios do
     use_build_sdk = !ENV['BUILD_SDK'].empty?
     use_build_destination = !ENV['BUILD_DESTINATION'].empty?
     use_cloned_source_packages_path = !ENV['CLONED_SOURCE_PACKAGES_PATH'].empty?
+    setup_ci(force: true)
     build_app(
       workspace: use_workspace ? ENV['WORKSPACE_PATH'] : nil,
       project: !use_workspace ? ENV['PROJECT_PATH'] : nil,
