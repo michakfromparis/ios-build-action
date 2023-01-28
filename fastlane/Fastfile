@@ -1,6 +1,7 @@
 default_platform(:ios)
 
 platform :ios do
+  puts 'Updated Fastlane!'
   desc 'Export ipa'
   lane :export_ipa do
     decode_file
@@ -147,7 +148,7 @@ platform :ios do
       scheme: ENV['SCHEME'],
       output_directory: File.dirname(ENV['OUTPUT_PATH']),
       output_name: File.basename(ENV['OUTPUT_PATH']),
-      clean: true,
+      clean: false,
       cloned_source_packages_path:
         if use_cloned_source_packages_path
           ENV['CLONED_SOURCE_PACKAGES_PATH']
