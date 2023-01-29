@@ -149,7 +149,7 @@ platform :ios do
       scheme: ENV['SCHEME'],
       output_directory: File.dirname(ENV['OUTPUT_PATH']),
       output_name: File.basename(ENV['OUTPUT_PATH']),
-      clean: false,
+      clean: true,
       cloned_source_packages_path:
         if use_cloned_source_packages_path
           ENV['CLONED_SOURCE_PACKAGES_PATH']
