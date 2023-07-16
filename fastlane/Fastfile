@@ -7,15 +7,24 @@ platform :ios do
   lane :export_ipa do
     decode_file
 
-    keychain_password = SecureRandom.uuid
+    keychain_name = "fastlane"
+    keychain_password = "superPassword"
 
-    create_keychain(
-      name: 'ios-build.keychain',
-      password: keychain_password,
-      default_keychain: true,
-      unlock: true,
-      timeout: 0
-    )
+    existing_keychains = list_keychains # Fetch existing keychains
+    puts('Listing keychains')
+    keychains = sh("security list-keychains -d user").split
+    if !keychains.include?("fastlane.keychain-db")
+      puts('No keychain. Creating one')
+      create_keychain(
+        name: "fastlane",
+        password: "superPassword",
+        default_keychain: true,
+        unlock: true,
+        timeout: false,
+        lock_when_sleeps: false,
+        add_to_search_list: true 
+      )
+    end
 
     if @is_split_cer
       import_certificate(
