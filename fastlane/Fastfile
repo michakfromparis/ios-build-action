@@ -10,7 +10,6 @@ platform :ios do
     keychain_name = "fastlane"
     keychain_password = "superPassword"
 
-    existing_keychains = list_keychains # Fetch existing keychains
     puts('Listing keychains')
     keychains = sh("security list-keychains -d user").split
     if !keychains.include?("fastlane.keychain-db")
